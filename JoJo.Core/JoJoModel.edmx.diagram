@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4f159cfe86164788b5eb2f2d3b9257bb" Name="Diagram1">
+        <EntityTypeShape EntityType="JoJoModel.Manufacture" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JoJoModel.Model" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JoJoModel.Product" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="JoJoModel.ProductCategory" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JoJoModel.ProductSubCategory" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JoJoModel.Series" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JoJoModel.UserRole" Width="1.5" PointX="7.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JoJoModel.Users" Width="1.5" PointX="10" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="JoJoModel.JJ_FK_Manuf_Series" ManuallyRouted="false" />
+        <AssociationConnector Association="JoJoModel.JJ_FK_Product_Manufacture" ManuallyRouted="false" />
+        <AssociationConnector Association="JoJoModel.JJ_FK_Model_Series" ManuallyRouted="false" />
+        <AssociationConnector Association="JoJoModel.JJ_FK_Product_Model" ManuallyRouted="false" />
+        <AssociationConnector Association="JoJoModel.JJ_FK_Product_ProdSubCate" ManuallyRouted="false" />
+        <AssociationConnector Association="JoJoModel.JJ_FK_Product_Series" ManuallyRouted="false" />
+        <AssociationConnector Association="JoJoModel.JJ_FK_Cate_SubCate" ManuallyRouted="false" />
+        <AssociationConnector Association="JoJoModel.JJ_FK_User_UserRole" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
