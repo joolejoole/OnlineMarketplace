@@ -1,0 +1,15 @@
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\bin\Debug\JoJo.Repo.dll.config
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\bin\Debug\JoJo.Repo.dll
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\bin\Debug\JoJo.Repo.pdb
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\bin\Debug\EntityFramework.dll
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\bin\Debug\JoJo.Core.dll
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\bin\Debug\JoJo.Core.pdb
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\bin\Debug\JoJo.Core.dll.config
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\bin\Debug\EntityFramework.xml
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\obj\Debug\JoJo.Repo.csprojAssemblyReference.cache
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\obj\Debug\JoJo.Repo.csproj.CoreCompileInputs.cache
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\obj\Debug\JoJo.Repo.csproj.CopyComplete
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\obj\Debug\JoJo.Repo.dll
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Repo\obj\Debug\JoJo.Repo.pdb
