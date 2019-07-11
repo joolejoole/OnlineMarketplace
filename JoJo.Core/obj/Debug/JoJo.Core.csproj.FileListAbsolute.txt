@@ -1,0 +1,12 @@
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\bin\Debug\JoJo.Core.dll.config
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\bin\Debug\JoJo.Core.dll
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\bin\Debug\JoJo.Core.pdb
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\bin\Debug\EntityFramework.dll
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\bin\Debug\EntityFramework.xml
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\obj\Debug\JoJo.Core.csprojAssemblyReference.cache
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\obj\Debug\JoJo.Core.csproj.CoreCompileInputs.cache
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\obj\Debug\JoJo.Core.csproj.CopyComplete
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\obj\Debug\JoJo.Core.dll
+C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\obj\Debug\JoJo.Core.pdb
