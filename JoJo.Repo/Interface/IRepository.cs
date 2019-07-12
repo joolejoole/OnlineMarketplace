@@ -16,11 +16,5 @@ namespace JoJo.Repo
         bool Insert(TEntity entity);
 
         bool Remove(TEntity entity);
-
-        //int Edit(TEntity entity);
-
-        bool SaveChanges();
-
-        Task SaveChangesAsync();
     }
 }

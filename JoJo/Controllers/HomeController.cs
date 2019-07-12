@@ -14,7 +14,7 @@ namespace JoJo.Controllers
             using (Core.JoJoEntities jo = new Core.JoJoEntities())
             {
                 Service.Sample sample = new Service.Sample(jo);
-                sample.TestInsert();
+                //sample.TestRelationship();
             }
 
             return View();

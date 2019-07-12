@@ -21,6 +21,7 @@ namespace JoJo.Repo
         public virtual bool Remove(TEntity entity)
         {
             bool status = false;
+
             try
             {
                 if (dbContext.Entry(entity).State == EntityState.Detached)
@@ -42,7 +43,16 @@ namespace JoJo.Repo
 
         public virtual TEntity GetById(int id)
         {
-            return dbContext.Set<TEntity>().Find(id);
+            try
+            {
+                return dbContext.Set<TEntity>().Find(id);
+            }
+            catch (SqlException ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+
+            return null;
         }
 
         public virtual bool Insert(TEntity entity)
@@ -67,48 +77,10 @@ namespace JoJo.Repo
             return dbContext.Set<TEntity>().ToList();
         }
 
-        /*
-        public int Edit(TEntity tentity)
-        {
-            int status = 0;
-            try
-            {
-                dbContext.Entry(tentity).State = EntityState.Modified;
-                status = 1;
-            }
-            catch (SqlException ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-            }
-            return status;
-        }
-        */
-
-        public bool SaveChanges()
-        {
-            bool status = false;
-
-            try
-            {
-                dbContext.SaveChanges();
-                status = true;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-            }
-
-            return status;
-        }
-
-        public async Task SaveChangesAsync()
-        {
-            await dbContext.SaveChangesAsync();
-        }
-
         public void Dispose()
         {
-            throw new NotImplementedException();
+            dbContext.Dispose();
+            //throw new NotImplementedException();
         }
     }
 }
