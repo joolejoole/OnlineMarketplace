@@ -1,0 +1,16 @@
+﻿.leftPanel{
+    border: 2px solid #EEEEEE;
+}
+.rows{
+    padding: 10px;
+    border: 1px solid #EEEEEE;
+    font-weight: bold;
+}
+.Pr{
+    text-align: center;
+    border: 1px solid #EEEEEE;
+    padding-top: 8px;
+}
+.rightPanel{
+    padding: 10px;
+}
