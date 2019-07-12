@@ -1,1 +1,12 @@
-.vs/JoJo/config/applicationhost.config
+.vs/*
+
+JoJo/obj/Debug/*
+
+JoJo.Core/bin/*
+JoJo.Core/obj/Debug/*
+
+JoJo.Repo/bin/*
+JoJo.Repo/obj/*
+
+JoJo.Service/bin/*
+JoJo.Service/obj/*
