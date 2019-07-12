@@ -130,7 +130,7 @@ namespace JoJo.Repo
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            dbContext.Dispose();
         }
 
         public void Save()

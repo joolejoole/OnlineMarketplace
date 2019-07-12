@@ -1,0 +1,198 @@
+﻿@{ Layout = "~/Views/Shared/_DisplayLayout.cshtml"; }
+@Styles.Render("~/Content/Filter.css")
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<div id="wrapper">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3 hidden-xs leftPanel">
+            <div class="row row-1 rows">
+                <div class="col-sm-4 col-md-4 col-md-4">
+                    <h4>Search:</h4>
+                </div>
+
+                <div class="col-sm-4 col-md-4 col-md-4">
+                    <button type="button" class="btn btn-default">Save</button>
+                </div>
+
+                <div class="col-sm-4 col-md-4 col-md-4">
+                    <button type="button" class="btn btn-warning">Clear</button>
+                </div>
+            </div>
+
+            <div class="row row-2 rows">
+                <div class="col-sm-6 col-md-6 col-md-6 Pr">
+                    <p>Product</p>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-md-6 Pr">
+                    <p>Project</p>
+                </div>
+            </div>
+
+            <div class="row row-3 rows">
+                <div class="col-sm-4 col-md-4 col-md-4">
+                    <label>Product Type</label>
+                </div>
+
+                <div class="col-sm-8 col-md-8 col-md-8">
+                    <select class="form-control">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row row-4 rows">
+                <div class="col-sm-4 col-md-4 col-md-4">
+                    <label>Model Year</label>
+                </div>
+                <div class="col-sm-3 col-md-3 col-md-3">
+                    <input class="form-control" type="number" name="minYear" />
+                </div>
+                <div style="text-align:center" class="col-sm-2 col-md-2 col-md-2">
+                    -
+                </div>
+                <div class="col-sm-3 col-md-3 col-md-3">
+                    <input class="form-control" type="number" name="maxYear" />
+                </div>
+            </div>
+
+            <div class="row row-5 rows">
+                <div class="col-sm-7 col-md-7 col-md-7">
+                    <label>Technical Specifications</label>
+                </div>
+
+                <div class="col-sm-5 col-md-5 col-md-5">
+                    <select class="form-control">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row row-6 rows">
+                <span class="glyphicon glyphicon-sort"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Airflow (CFM)<br /><br />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-md-3">
+                        <input type="text" class="form-control sliderValue" data-index="0" value="0" id="minAir" />
+                    </div>
+                    <div style="margin-top:12px" class="col-sm-6 col-md-6 col-md-6">
+                        <div id="sliderAir"></div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-md-3">
+                        <input type="text" class="form-control sliderValue" data-index="1" value="100" id="maxAir" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-7 rows">
+                <span class="glyphicon glyphicon-sort"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Max Power (W)<br /><br />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-md-3">
+                        <input type="text" class="form-control sliderValue" data-index="0" value="0" id="minPower" />
+                    </div>
+                    <div style="margin-top:12px" class="col-sm-6 col-md-6 col-md-6">
+                        <div id="sliderPower"></div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-md-3">
+                        <input type="text" class="form-control sliderValue" data-index="1" value="100" id="maxPower" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-8 rows">
+                <span class="glyphicon glyphicon-sort"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sound At Max Speed (dBA)<br /><br />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-md-3">
+                        <input type="text" class="form-control sliderValue" data-index="0" value="0" id="minSound" />
+                    </div>
+                    <div style="margin-top:12px" class="col-sm-6 col-md-6 col-md-6">
+                        <div id="sliderSound"></div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-md-3">
+                        <input type="text" class="form-control sliderValue" data-index="1" value="100" id="maxSound" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-9 rows">
+                <span class="glyphicon glyphicon-sort"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fan Sweep Diameter (in)<br /><br />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-md-3">
+                        <input type="text" class="form-control sliderValue" data-index="0" value="0" id="minSweep" />
+                    </div>
+                    <div style="margin-top:12px" class="col-sm-6 col-md-6 col-md-6">
+                        <div id="sliderSweep"></div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-md-3">
+                        <input type="text" class="form-control sliderValue" data-index="1" value="100" id="maxSweep" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            $(document).ready(function () {
+                $( "#sliderAir" ).slider({
+                  range: true,
+                  min: 0,
+                  max: 100,
+                  values: [ 0, 100 ],
+                  slide: function( event, ui ) {
+                      $("#minAir").val(ui.values[0]);
+                      $("#maxAir").val(ui.values[1]);
+                  }
+                });
+                $("#minAir").val($("#sliderAir").slider("values", 0));
+                $("#maxAir").val($("#sliderAir").slider("values", 1));
+
+                $( "#sliderPower" ).slider({
+                  range: true,
+                  min: 0,
+                  max: 100,
+                  values: [ 0, 100 ],
+                  slide: function( event, ui ) {
+                      $("#minPower").val(ui.values[0]);
+                      $("#maxPower").val(ui.values[1]);
+                  }
+                });
+                $("#minPower").val($("#sliderPower").slider("values", 0));
+                $("#maxPower").val($("#sliderPower").slider("values", 1));
+
+                $( "#sliderSound" ).slider({
+                  range: true,
+                  min: 0,
+                  max: 100,
+                  values: [ 0, 100 ],
+                  slide: function( event, ui ) {
+                      $("#minSound").val(ui.values[0]);
+                      $("#maxSound").val(ui.values[1]);
+                  }
+                });
+                $("#minSound").val($("#sliderSound").slider("values", 0));
+                $("#maxSound").val($("#sliderSound").slider("values", 1));
+
+                $( "#sliderSweep" ).slider({
+                  range: true,
+                  min: 0,
+                  max: 100,
+                  values: [ 0, 100 ],
+                  slide: function( event, ui ) {
+                      $("#minSweep").val(ui.values[0]);
+                      $("#maxSweep").val(ui.values[1]);
+                  }
+                });
+                $("#minSweep").val($("#sliderSweep").slider("values", 0));
+                $("#maxSweep").val($("#sliderSweep").slider("values", 1));
+            });
+        </script>
+
+
+
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 rightPanel">
+            <h5><b>Mechanical</b>&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp; HUVAC Fans</h5>
+        </div>
+    </div>
+</div>
+
