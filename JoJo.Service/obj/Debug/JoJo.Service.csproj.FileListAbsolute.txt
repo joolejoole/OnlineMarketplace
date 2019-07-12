@@ -34,3 +34,21 @@ C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Service\obj\Debug\JoJo.Servic
 C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Service\obj\Debug\JoJo.Service.csproj.CopyComplete
 C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Service\obj\Debug\JoJo.Service.dll
 C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Service\obj\Debug\JoJo.Service.pdb
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\JoJo.Service.dll.config
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\JoJo.Service.dll
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\JoJo.Service.pdb
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\EntityFramework.dll
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\JoJo.Core.dll
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\JoJo.Repo.dll
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\JoJo.Core.pdb
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\JoJo.Core.dll.config
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\JoJo.Repo.pdb
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\JoJo.Repo.dll.config
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\EntityFramework.xml
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\obj\Debug\JoJo.Service.csprojAssemblyReference.cache
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\obj\Debug\JoJo.Service.csproj.CoreCompileInputs.cache
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\obj\Debug\JoJo.Service.csproj.CopyComplete
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\obj\Debug\JoJo.Service.dll
+C:\Users\mural\Documents\Itlize\Work\Day10MVC\New folder\New folder\OnlineMarketplace\JoJo.Service\obj\Debug\JoJo.Service.pdb
