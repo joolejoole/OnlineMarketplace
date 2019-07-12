@@ -21,6 +21,15 @@ namespace JoJo.Service
             uow = new Repo.UnitOfWork(this.dbContext);
         }
 
+        public void TestRelationship()
+        {
+            Users user = uow.UsersRepository.GetById(10);
+
+            user.UserRole = uow.UserRoleRepository.GetById(4);
+
+            uow.Save();
+        }
+
         public void TestInsert()
         {
             UserRole u = new UserRole()

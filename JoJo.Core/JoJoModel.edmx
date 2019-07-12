@@ -235,7 +235,7 @@
             <PropertyRef Name="ModelId" />
           </Key>
           <Property Name="ModelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SeriesId" Type="Int32" Nullable="false" />
+          <Property Name="SeriesId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
           <Property Name="ModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ModelType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TypeAmt" Type="Int32" />
@@ -248,9 +248,9 @@
           </Key>
           <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SubCategoryId" Type="Int32" Nullable="false" />
-          <Property Name="ModelId" Type="Int32" Nullable="false" />
-          <Property Name="SeriesId" Type="Int32" Nullable="false" />
-          <Property Name="ManufactureId" Type="Int32" Nullable="false" />
+          <Property Name="ModelId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+          <Property Name="SeriesId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+          <Property Name="ManufactureId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
           <Property Name="ProductImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SpecDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -273,7 +273,7 @@
           </Key>
           <Property Name="SubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
           <Property Name="SPECS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SpecsAmt" Type="Int32" />
           <NavigationProperty Name="Product" Relationship="Self.JJ_FK_Product_ProdSubCate" FromRole="ProductSubCategory" ToRole="Product" />
@@ -285,7 +285,7 @@
           </Key>
           <Property Name="SeriesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SeriesName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ManufactureId" Type="Int32" Nullable="false" />
+          <Property Name="ManufactureId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
           <NavigationProperty Name="Manufacture" Relationship="Self.JJ_FK_Manuf_Series" FromRole="Series" ToRole="Manufacture" />
           <NavigationProperty Name="Model" Relationship="Self.JJ_FK_Model_Series" FromRole="Series" ToRole="Model" />
           <NavigationProperty Name="Product" Relationship="Self.JJ_FK_Product_Series" FromRole="Series" ToRole="Product" />
@@ -306,7 +306,7 @@
           <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserRoleId" Type="Int32" Nullable="false" />
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
           <Property Name="UserPicture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="UserRole" Relationship="Self.JJ_FK_User_UserRole" FromRole="Users" ToRole="UserRole" />
         </EntityType>
