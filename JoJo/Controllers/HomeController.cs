@@ -11,12 +11,6 @@ namespace JoJo.Controllers
     {
         public ActionResult Index()
         {
-            using (Core.JoJoEntities jo = new Core.JoJoEntities())
-            {
-                Service.Sample sample = new Service.Sample(jo);
-                sample.TestInsert();
-            }
-
             return View();
         }
     }
