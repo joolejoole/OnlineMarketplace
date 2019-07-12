@@ -10,3 +10,15 @@ C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\obj\Debug\JoJo.Core.csproj.CoreCom
 C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\obj\Debug\JoJo.Core.csproj.CopyComplete
 C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\obj\Debug\JoJo.Core.dll
 C:\Users\nakhuang\source\repos\JoJo\JoJo.Core\obj\Debug\JoJo.Core.pdb
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\bin\Debug\JoJo.Core.dll.config
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\bin\Debug\JoJo.Core.dll
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\bin\Debug\JoJo.Core.pdb
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\bin\Debug\EntityFramework.dll
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\bin\Debug\EntityFramework.xml
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\obj\Debug\JoJo.Core.csprojAssemblyReference.cache
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\obj\Debug\JoJo.Core.csproj.CoreCompileInputs.cache
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\obj\Debug\JoJo.Core.csproj.CopyComplete
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\obj\Debug\JoJo.Core.dll
+C:\Users\quven\OneDrive\Desktop\Project\Clone\JoJo.Core\obj\Debug\JoJo.Core.pdb

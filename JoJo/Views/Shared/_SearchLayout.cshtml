@@ -22,38 +22,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="navUl">
                     @Html.ActionLink("SignUp", "#", "#", new { area = "" }, new { @class = "btn btn-lg btn-default signupBtn" })
+                    <li class="left"><span class="badge">Hello! User</span><img style="width:50px;height:50px" src="~/Src/Users/selfie.jfif" class="img-circle selfieImg" /></li>
                 </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-1 col-sm-3 col-md-4 col-lg-4">
-
-            </div>
-
-            <div class="col-xs-10 col-sm-6 col-md-4 col-lg-4">
-                <div id="banner">
-                    <p>JooleJoole</p>
-                </div>
-            </div>
-
-            <script>
-                $("#banner").mouseenter(function () {
-                    $(this).css({
-                        "background-image":"linear-gradient(#40BCF4,#EEF6FA)"
-                    });
-                });
-                 $("#banner").mouseout(function () {
-                    $(this).css({
-                        "background-image":"linear-gradient(#EEF6FA,#40BCF4)"
-                    });
-                });
-            </script>
-
-            <div class="col-xs-1 col-sm-3 col-md-4 col-lg-4">
-
             </div>
         </div>
     </div>
