@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JoJoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JoJoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Manufacture">
           <Key>
             <PropertyRef Name="ManufactureId" />
@@ -19,14 +19,13 @@
           <Property Name="ModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SeriesId" Type="int" Nullable="false" />
           <Property Name="ModelName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ModelType" Type="xml" />
-          <Property Name="TypeAmt" Type="int" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductId" />
           </Key>
           <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="SubCategoryId" Type="int" Nullable="false" />
           <Property Name="ModelId" Type="int" Nullable="false" />
           <Property Name="SeriesId" Type="int" Nullable="false" />
@@ -34,6 +33,7 @@
           <Property Name="ProductImage" Type="varchar" MaxLength="100" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SpecDetails" Type="xml" />
+          <Property Name="TypeDetails" Type="xml" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -51,6 +51,8 @@
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="SPECS" Type="xml" />
           <Property Name="SpecsAmt" Type="int" />
+          <Property Name="ModelType" Type="xml" />
+          <Property Name="TypeAmt" Type="int" />
         </EntityType>
         <EntityType Name="Series">
           <Key>
@@ -138,6 +140,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="JJ_FK_Product_ProdCate">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="JJ_FK_Product_ProdSubCate">
           <End Role="ProductSubCategory" Type="Self.ProductSubCategory" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -203,6 +217,10 @@
             <End Role="Model" EntitySet="Model" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
+          <AssociationSet Name="JJ_FK_Product_ProdCate" Association="Self.JJ_FK_Product_ProdCate">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
           <AssociationSet Name="JJ_FK_Product_ProdSubCate" Association="Self.JJ_FK_Product_ProdSubCate">
             <End Role="ProductSubCategory" EntitySet="ProductSubCategory" />
             <End Role="Product" EntitySet="Product" />
@@ -216,8 +234,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JoJoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -237,8 +254,6 @@
           <Property Name="ModelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SeriesId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
           <Property Name="ModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ModelType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TypeAmt" Type="Int32" />
           <NavigationProperty Name="Series" Relationship="Self.JJ_FK_Model_Series" FromRole="Model" ToRole="Series" />
           <NavigationProperty Name="Product" Relationship="Self.JJ_FK_Product_Model" FromRole="Model" ToRole="Product" />
         </EntityType>
@@ -258,6 +273,9 @@
           <NavigationProperty Name="Model" Relationship="Self.JJ_FK_Product_Model" FromRole="Product" ToRole="Model" />
           <NavigationProperty Name="ProductSubCategory" Relationship="Self.JJ_FK_Product_ProdSubCate" FromRole="Product" ToRole="ProductSubCategory" />
           <NavigationProperty Name="Series" Relationship="Self.JJ_FK_Product_Series" FromRole="Product" ToRole="Series" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="TypeDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductCategory" Relationship="JoJoModel.JJ_FK_Product_ProdCate" FromRole="Product" ToRole="ProductCategory" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -266,6 +284,7 @@
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProductSubCategory" Relationship="Self.JJ_FK_Cate_SubCate" FromRole="ProductCategory" ToRole="ProductSubCategory" />
+          <NavigationProperty Name="Product" Relationship="JoJoModel.JJ_FK_Product_ProdCate" FromRole="ProductCategory" ToRole="Product" />
         </EntityType>
         <EntityType Name="ProductSubCategory">
           <Key>
@@ -278,6 +297,8 @@
           <Property Name="SpecsAmt" Type="Int32" />
           <NavigationProperty Name="Product" Relationship="Self.JJ_FK_Product_ProdSubCate" FromRole="ProductSubCategory" ToRole="Product" />
           <NavigationProperty Name="ProductCategory" Relationship="Self.JJ_FK_Cate_SubCate" FromRole="ProductSubCategory" ToRole="ProductCategory" />
+          <Property Name="ModelType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeAmt" Type="Int32" />
         </EntityType>
         <EntityType Name="Series">
           <Key>
@@ -447,7 +468,23 @@
             <End Role="UserRole" EntitySet="UserRole" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="JJ_FK_Product_ProdCate" Association="JoJoModel.JJ_FK_Product_ProdCate">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="JJ_FK_Product_ProdCate">
+          <End Type="JoJoModel.ProductCategory" Role="ProductCategory" Multiplicity="1" />
+          <End Type="JoJoModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -468,14 +505,14 @@
                 <ScalarProperty Name="ModelId" ColumnName="ModelId" />
                 <ScalarProperty Name="SeriesId" ColumnName="SeriesId" />
                 <ScalarProperty Name="ModelName" ColumnName="ModelName" />
-                <ScalarProperty Name="ModelType" ColumnName="ModelType" />
-                <ScalarProperty Name="TypeAmt" ColumnName="TypeAmt" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="JoJoModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="TypeDetails" ColumnName="TypeDetails" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
                 <ScalarProperty Name="ModelId" ColumnName="ModelId" />
@@ -498,6 +535,8 @@
           <EntitySetMapping Name="ProductSubCategory">
             <EntityTypeMapping TypeName="JoJoModel.ProductSubCategory">
               <MappingFragment StoreEntitySet="ProductSubCategory">
+                <ScalarProperty Name="TypeAmt" ColumnName="TypeAmt" />
+                <ScalarProperty Name="ModelType" ColumnName="ModelType" />
                 <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
                 <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />

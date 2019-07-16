@@ -25,6 +25,8 @@ namespace JoJo.Core
         public int CategoryId { get; set; }
         public string SPECS { get; set; }
         public Nullable<int> SpecsAmt { get; set; }
+        public string ModelType { get; set; }
+        public Nullable<int> TypeAmt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }
