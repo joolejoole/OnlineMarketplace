@@ -1,9 +1,10 @@
 .vs/*
 
-JoJo/obj/Debug/*
+JoJo/obj/*
+JoJo/bin/*
 
 JoJo.Core/bin/*
-JoJo.Core/obj/Debug/*
+JoJo.Core/obj/*
 
 JoJo.Repo/bin/*
 JoJo.Repo/obj/*

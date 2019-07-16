@@ -14,10 +14,8 @@
       <PropertyRef Name="ModelId" />
     </Key>
     <Property Name="ModelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SeriesId" Type="Int32" Nullable="false" />
+    <Property Name="SeriesId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="ModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ModelType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="TypeAmt" Type="Int32" />
     <NavigationProperty Name="Series" Relationship="Self.JJ_FK_Model_Series" FromRole="Model" ToRole="Series" />
     <NavigationProperty Name="Product" Relationship="Self.JJ_FK_Product_Model" FromRole="Model" ToRole="Product" />
   </EntityType>
@@ -27,9 +25,9 @@
     </Key>
     <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SubCategoryId" Type="Int32" Nullable="false" />
-    <Property Name="ModelId" Type="Int32" Nullable="false" />
-    <Property Name="SeriesId" Type="Int32" Nullable="false" />
-    <Property Name="ManufactureId" Type="Int32" Nullable="false" />
+    <Property Name="ModelId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="SeriesId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="ManufactureId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="ProductImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="SpecDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -37,6 +35,9 @@
     <NavigationProperty Name="Model" Relationship="Self.JJ_FK_Product_Model" FromRole="Product" ToRole="Model" />
     <NavigationProperty Name="ProductSubCategory" Relationship="Self.JJ_FK_Product_ProdSubCate" FromRole="Product" ToRole="ProductSubCategory" />
     <NavigationProperty Name="Series" Relationship="Self.JJ_FK_Product_Series" FromRole="Product" ToRole="Series" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="TypeDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProductCategory" Relationship="JoJoModel.JJ_FK_Product_ProdCate" FromRole="Product" ToRole="ProductCategory" />
   </EntityType>
   <EntityType Name="ProductCategory">
     <Key>
@@ -45,6 +46,7 @@
     <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ProductSubCategory" Relationship="Self.JJ_FK_Cate_SubCate" FromRole="ProductCategory" ToRole="ProductSubCategory" />
+    <NavigationProperty Name="Product" Relationship="JoJoModel.JJ_FK_Product_ProdCate" FromRole="ProductCategory" ToRole="Product" />
   </EntityType>
   <EntityType Name="ProductSubCategory">
     <Key>
@@ -52,11 +54,13 @@
     </Key>
     <Property Name="SubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="SPECS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SpecsAmt" Type="Int32" />
     <NavigationProperty Name="Product" Relationship="Self.JJ_FK_Product_ProdSubCate" FromRole="ProductSubCategory" ToRole="Product" />
     <NavigationProperty Name="ProductCategory" Relationship="Self.JJ_FK_Cate_SubCate" FromRole="ProductSubCategory" ToRole="ProductCategory" />
+    <Property Name="ModelType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TypeAmt" Type="Int32" />
   </EntityType>
   <EntityType Name="Series">
     <Key>
@@ -64,7 +68,7 @@
     </Key>
     <Property Name="SeriesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SeriesName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ManufactureId" Type="Int32" Nullable="false" />
+    <Property Name="ManufactureId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <NavigationProperty Name="Manufacture" Relationship="Self.JJ_FK_Manuf_Series" FromRole="Series" ToRole="Manufacture" />
     <NavigationProperty Name="Model" Relationship="Self.JJ_FK_Model_Series" FromRole="Series" ToRole="Model" />
     <NavigationProperty Name="Product" Relationship="Self.JJ_FK_Product_Series" FromRole="Series" ToRole="Product" />
@@ -85,7 +89,7 @@
     <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="UserRoleId" Type="Int32" Nullable="false" />
+    <Property Name="UserRoleId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="UserPicture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="UserRole" Relationship="Self.JJ_FK_User_UserRole" FromRole="Users" ToRole="UserRole" />
   </EntityType>
@@ -226,5 +230,21 @@
       <End Role="UserRole" EntitySet="UserRole" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>
+    <AssociationSet Name="JJ_FK_Product_ProdCate" Association="JoJoModel.JJ_FK_Product_ProdCate">
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="JJ_FK_Product_ProdCate">
+    <End Type="JoJoModel.ProductCategory" Role="ProductCategory" Multiplicity="1" />
+    <End Type="JoJoModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

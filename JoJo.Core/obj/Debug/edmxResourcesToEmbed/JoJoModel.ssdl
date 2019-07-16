@@ -14,14 +14,13 @@
     <Property Name="ModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SeriesId" Type="int" Nullable="false" />
     <Property Name="ModelName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ModelType" Type="xml" />
-    <Property Name="TypeAmt" Type="int" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ProductId" />
     </Key>
     <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="SubCategoryId" Type="int" Nullable="false" />
     <Property Name="ModelId" Type="int" Nullable="false" />
     <Property Name="SeriesId" Type="int" Nullable="false" />
@@ -29,6 +28,7 @@
     <Property Name="ProductImage" Type="varchar" MaxLength="100" />
     <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="SpecDetails" Type="xml" />
+    <Property Name="TypeDetails" Type="xml" />
   </EntityType>
   <EntityType Name="ProductCategory">
     <Key>
@@ -46,6 +46,8 @@
     <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="SPECS" Type="xml" />
     <Property Name="SpecsAmt" Type="int" />
+    <Property Name="ModelType" Type="xml" />
+    <Property Name="TypeAmt" Type="int" />
   </EntityType>
   <EntityType Name="Series">
     <Key>
@@ -133,6 +135,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="JJ_FK_Product_ProdCate">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="JJ_FK_Product_ProdSubCate">
     <End Role="ProductSubCategory" Type="Self.ProductSubCategory" Multiplicity="1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -196,6 +210,10 @@
     </AssociationSet>
     <AssociationSet Name="JJ_FK_Product_Model" Association="Self.JJ_FK_Product_Model">
       <End Role="Model" EntitySet="Model" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="JJ_FK_Product_ProdCate" Association="Self.JJ_FK_Product_ProdCate">
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
     <AssociationSet Name="JJ_FK_Product_ProdSubCate" Association="Self.JJ_FK_Product_ProdSubCate">

@@ -23,8 +23,6 @@ namespace JoJo.Core
         public int ModelId { get; set; }
         public int SeriesId { get; set; }
         public string ModelName { get; set; }
-        public string ModelType { get; set; }
-        public Nullable<int> TypeAmt { get; set; }
     
         public virtual Series Series { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -15,14 +15,14 @@
           <ScalarProperty Name="ModelId" ColumnName="ModelId" />
           <ScalarProperty Name="SeriesId" ColumnName="SeriesId" />
           <ScalarProperty Name="ModelName" ColumnName="ModelName" />
-          <ScalarProperty Name="ModelType" ColumnName="ModelType" />
-          <ScalarProperty Name="TypeAmt" ColumnName="TypeAmt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="JoJoModel.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="TypeDetails" ColumnName="TypeDetails" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
           <ScalarProperty Name="ModelId" ColumnName="ModelId" />
@@ -45,6 +45,8 @@
     <EntitySetMapping Name="ProductSubCategory">
       <EntityTypeMapping TypeName="JoJoModel.ProductSubCategory">
         <MappingFragment StoreEntitySet="ProductSubCategory">
+          <ScalarProperty Name="TypeAmt" ColumnName="TypeAmt" />
+          <ScalarProperty Name="ModelType" ColumnName="ModelType" />
           <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
           <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
