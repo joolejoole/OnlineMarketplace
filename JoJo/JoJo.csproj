@@ -128,6 +128,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CompareController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
+    <Compile Include="Controllers\ProductSummaryController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -190,6 +191,7 @@
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Search\Search_1.cshtml" />
     <Content Include="Views\Search\_Layout.cshtml" />
+    <Content Include="Views\ProductSummary\ShowProductSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

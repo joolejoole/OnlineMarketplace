@@ -1,0 +1,165 @@
+﻿@model JoJo.Models.Product
+@using System.Xml.Linq;
+
+@{
+    ViewBag.Title = "ShowProductSummary";
+    Layout = "~/Views/Shared/_DisplayLayout.cshtml";
+}
+
+
+<style>
+    .table-grey {
+        background-color: #e6f2ff;
+    }
+</style>
+
+<style>
+    #nav2 {
+        background-color: #F3F4F5;
+        left: 0;
+        right: 0;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+</style>
+
+
+
+<br />
+<div id="nav2">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Product Summary</a></li>
+                <li><a href="/">Product Details</a></li>
+                <li><a href="/">Product Documentation</a></li>
+                <li><a href="/">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<body>
+
+    <div class="container-fluid">
+        <h2 style="color:#006699;">Product Summary</h2>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <hr />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h4>DESCRIPTION</h4>
+                        <table class="table table-hover">
+                            <tr>
+                                <td class="table-grey">Manufacture</td>
+                                <td>@Model.ManufactureIdName</td>
+                            </tr>
+                            <tr>
+                                <td class="table-grey">Series</td>
+                                <td>@Model.SeriesName</td>
+                            </tr>
+                            <tr>
+                                <td class="table-grey">Model</td>
+                                <td>@Model.ModelName</td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <hr />
+                        <h4>TYPE</h4>
+                        <table class="table table-hover">
+                            @{
+                                XElement xml1 = XElement.Parse(Model.ModelType);
+                                List<XElement> lists1 = new List<XElement>();
+                                lists1 = @xml1.Descendants("item").ToList();
+                            }
+
+                            @{
+                                XElement xml2 = XElement.Parse(Model.TypeDetails);
+                                List<XElement> lists2 = new List<XElement>();
+                                lists2 = @xml2.Descendants("item").ToList();
+                            }
+
+
+                            @for (int i = 0; i < Model.TypeAmt; i++)
+                            {
+                                <tr>
+                                    <td class="table-grey">@lists1[i].Value</td>
+                                    <td>@lists2[i].Value</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <hr />
+                <h4>TECHNICAL SPECIFICATIONS</h4>
+                <table class="table table-hover">
+                    @{
+                        XElement xml3 = XElement.Parse(Model.SPECS);
+                        List<XElement> lists3 = new List<XElement>();
+                        lists3 = @xml3.Descendants("item").ToList();
+                    }
+
+                    @{
+                        XElement xml4 = XElement.Parse(Model.SpecDetails);
+                        List<XElement> lists4 = new List<XElement>();
+                        lists4 = @xml4.Descendants("item").ToList();
+                    }
+
+                    @{
+
+                        for (int i = 0; i < Model.SpecsAmt; i++)
+                        {
+                            string dataValue = lists4[i].Value;
+                            char[] deli = new char[] { ',', '(', ')', ' ', '\n', '\r', '\t' };
+                            string[] dataValueList = dataValue.Split(deli, StringSplitOptions.RemoveEmptyEntries);
+                            int valueCount = dataValueList.Count();
+
+
+                            if (valueCount == 2)
+                            {
+                                <tr>
+                                    <td class="table-grey">@lists3[i].Value</td>
+                                    <td class="table-grey">Min</td>
+                                    <td>@dataValueList[0]</td>
+                                    <td class="table-grey">Max</td>
+                                    <td>@dataValueList[1]</td>
+                                </tr>
+                            }
+
+                            else
+                            {
+                                <tr>
+                                    <td class="table-grey">@lists3[i].Value</td>
+                                    <td>@lists4[i].Value</td>
+                                </tr>
+
+
+                            }
+
+                        }
+                    }
+
+
+
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</body>
