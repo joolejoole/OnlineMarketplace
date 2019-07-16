@@ -21,6 +21,7 @@
         <AssociationConnector Association="JoJoModel.JJ_FK_Product_Series" ManuallyRouted="false" />
         <AssociationConnector Association="JoJoModel.JJ_FK_Cate_SubCate" ManuallyRouted="false" />
         <AssociationConnector Association="JoJoModel.JJ_FK_User_UserRole" ManuallyRouted="false" />
+        <AssociationConnector Association="JoJoModel.JJ_FK_Product_ProdCate" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
