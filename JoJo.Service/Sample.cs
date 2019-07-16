@@ -29,21 +29,18 @@ namespace JoJo.Service
 
             uow.Save();
         }
-
         public IEnumerable<ProductSubCategory> subCategory(int catID)
         {
             IEnumerable<ProductSubCategory> subCat = uow.ProductSubCategoryRepository.GetAll().Where(x => x.CategoryId == catID).ToList();
 
             return subCat;
         }
-
         public List<ProductSubCategory> catcat(string ename)
         {
-            var emp = uow.ProductSubCategoryRepository.GetAll().Where(x => x.SubCategoryName.StartsWith(ename)).ToList();
+            var emp = uow.ProductSubCategoryRepository.GetAll().Where( x=>x.SubCategoryName.StartsWith(ename)).ToList();
 
             return emp;
         }
-
         public void TestInsert()
         {
             UserRole u = new UserRole()
