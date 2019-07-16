@@ -1,0 +1,65 @@
+﻿@model JoJo.Models.CatSubModel
+
+
+
+<style>
+    /*body {
+        background-image: linear-gradient(#006699, white);
+    }
+
+    #catI {
+        display: inline-block;
+    }
+
+    #subI {
+        display: inline-block;
+    }
+
+    #sI {
+        display: inline-block;
+    }
+
+    #content {
+        padding-left: 30%;
+        padding-right: 30%;
+    }
+
+    #close-image {
+        width: 30px;
+
+    }*/
+    body {
+        background-image: linear-gradient(#006699, white);
+    }
+          #catI {
+        display: inline-block;
+    }
+    body {
+        background-image: linear-gradient(#006699, white);
+    }
+    #catI {
+        display: inline-block;
+    }
+    
+    #close-image {
+        width: 30px;
+
+   
+</style>
+<div class="center-div" id="content">
+    <div class="form-group" id="catI">
+        @if (ViewBag.prodCat != null)
+        {
+            @Html.DropDownListFor(model => model.CategoryId, ViewBag.prodCat as SelectList, "--Select Category--", new { @class = "form-control" })
+        }
+    </div>
+    <div class="form-group" id="subI">
+
+        @Html.TextBox("txtempname", null, new { @class = "form-control" })
+    </div>
+    <div class="form-group" id="sI">
+        @*<button id="close-image"><img src="http://www.iconarchive.com/download/i85638/graphicloads/100-flat/zoom-seach.ico"></button>*@
+        <button onclick="sesh()"><img id="close-image" src="~/Src/Srch/pls.png"></button>
+        @*<input type="submit" value="Submit" class="btn btn-default" />*@
+    </div>
+</div>
