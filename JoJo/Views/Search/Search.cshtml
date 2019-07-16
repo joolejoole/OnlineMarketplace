@@ -1,97 +1,97 @@
 ﻿@model JoJo.Models.CatSubModel
 
-@*@{ 
-    Layout = null;
-}*@
+@*@{
+        Layout = null;
+    }*@
 
-   
-    <style>
-        body{
-            background-color:#E0F5FD;
-        }
-        #catI {
-            display: inline-block;
-        }
+@{
+    Layout = "~/Views/Search/_Layout.cshtml";
+}
 
-        #subI {
-            display: inline-block;
-        }
+<style>
+    body {
+        background-color: #E0F5FD;
+    }
 
-        #sI {
-            display: inline-block;
-        }
+    #catI {
+        display: inline-block;
+    }
 
-        #content {
-            padding-left: 32.5%;
-        }
-        /*#close-image
+    #subI {
+        display: inline-block;
+    }
+
+    #sI {
+        display: inline-block;
+    }
+
+    #content {
+        padding-left: 32.5%;
+    }
+    /*#close-image
         {
             width:30px;
         }*/
-        
-    </style>
-   <br /><br />
-    <div class="center-div" id="content">
-        <div class="form-group" id="catI">
-            @if (ViewBag.prodCat != null)
-            {
-                @Html.DropDownListFor(model => model.CategoryId, ViewBag.prodCat as SelectList, "--Select Category--", new { @class = "form-control" })
-            }
+</style>
+<br /><br />
+<div class="center-div" id="content">
+    <div class="form-group" id="catI">
+        @if (ViewBag.prodCat != null)
+        {
+            @Html.DropDownListFor(model => model.CategoryId, ViewBag.prodCat as SelectList, "--Select Category--", new { @class = "form-control" })
+        }
+    </div>
+    <div class="form-group" id="subI">
+        <div>
+            @Html.TextBox("txtempname", null, new { @class = "form-control" })
         </div>
-        <div class="form-group" id="subI">
-            <div >
-                @Html.TextBox("txtempname", null, new { @class = "form-control" })
-            </div>
+    </div>
+    <div class="form-group" id="sI">
+        <div>
+            <button onclick="sesh()"><img id="close-image" src="~/Src/Srch/pls.png" height="20"></button>
         </div>
-        <div class="form-group" id="sI">
-                <div >
-                    <button onclick="sesh()"><img id="close-image" src="~/Src/Srch/pls.png" height="20"></button>
+    </div>
+</div>
 
-                </div>
-        </div>
-     </div>
-    
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.0.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/jquery-ui.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#CategoryId").change(function () {                
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.0.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/jquery-ui.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#CategoryId").change(function () {
+            $("#SubCategoryId").empty();
+            $.get("/Search/GetSubCat", { CategoryId: $("#CategoryId").val() }, function (data) {
+                var ss = document.getElementById("CategoryId");
+                sessionStorage.setItem('CategoryId', ss.val);
                 $("#SubCategoryId").empty();
-                $.get("/Search/GetSubCat", { CategoryId: $("#CategoryId").val() }, function (data) {
-                    var ss = document.getElementById("CategoryId");
-                    sessionStorage.setItem('CategoryId', ss.val);
-                    $("#SubCategoryId").empty();
-                    $.each(data, function (index, row) {
-                        $("#SubCategoryId").append("<option value='" + row.SubCategoryId + "'>" + row.SubCategoryName + "</option>")
-                    });
+                $.each(data, function (index, row) {
+                    $("#SubCategoryId").append("<option value='" + row.SubCategoryId + "'>" + row.SubCategoryName + "</option>")
                 });
-            })
-        });
-
-        $(function () {
-            $("#txtempname").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        url: "/Search/getemp/",
-                        data: "{'ename':'" + request.term + "'}",
-                        datatype: "json",
-                        type: "POST",
-                        contentType: "application/json; charset-utf-8",
-                        success: function (data) {
-                            response($.map(data, function (item) {
-                                return item;
-                            }))
-                        },
-                    });
-                },
-                minLenght: 1
             });
+        })
+    });
+
+    $(function () {
+        $("#txtempname").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Search/getemp/",
+                    data: "{'ename':'" + request.term + "'}",
+                    datatype: "json",
+                    type: "POST",
+                    contentType: "application/json; charset-utf-8",
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return item;
+                        }))
+                    },
+                });
+            },
+            minLenght: 1
         });
-       
+    });
+
     function sesh() {
-        
+
         console.log(sessionStorage.getItem('CategoryId'));
     }
-
-    </script>
-
+</script>
