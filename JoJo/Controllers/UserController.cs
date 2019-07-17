@@ -20,11 +20,12 @@ namespace JoJo.Controllers
             return View(one);
         }
 
-        Services ss;
-        //Registration POST action 
+        private Services ss;
+
+        //Registration POST action
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration( UserModel user, HttpPostedFileBase file)
+        public ActionResult Registration(UserModel user, HttpPostedFileBase file)
         {
             bool Status = false;
             string message = "";
@@ -33,25 +34,28 @@ namespace JoJo.Controllers
             //Set the Image File Path.
             string imgP = Path.Combine(Server.MapPath("~/Src/Users"), fileName);
             file.SaveAs(imgP);
-            // Model Validation 
+            // Model Validation
             if (ModelState.IsValid)
             {
+                #region //Email is already Exist
 
-                #region //Email is already Exist 
                 var isExist = IsEmailExist(user.Email);
                 if (isExist)
                 {
                     ModelState.AddModelError("EmailExist", "Email already exist");
                     return View(user);
                 }
-                #endregion
 
+                #endregion //Email is already Exist
 
-                #region  Password Hashing 
+                #region Password Hashing
+
                 user.Password = Crypto.Hash(user.Password);
-                user.ConfirmPassword = Crypto.Hash(user.ConfirmPassword); 
-                #endregion
-                JoJoEntities1 dc = new JoJoEntities1();
+                user.ConfirmPassword = Crypto.Hash(user.ConfirmPassword);
+
+                #endregion Password Hashing
+
+                JoJoEntities dc = new JoJoEntities();
                 ss = new Services(dc);
                 ss.saveUserReg(user, imgP);
 
@@ -59,7 +63,7 @@ namespace JoJo.Controllers
                 //SendVerificationLinkEmail(user.EmailID, user.ActivationCode.ToString());
                 message = "Registration successfully done with ID" + user.Email;
                 Status = true;
-            }            
+            }
             else
             {
                 message = "Invalid Request";
@@ -70,7 +74,7 @@ namespace JoJo.Controllers
             return View(user);
         }
 
-        //Login 
+        //Login
         [HttpGet]
         public ActionResult Login()
         {
@@ -83,15 +87,13 @@ namespace JoJo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(UserLogin login, string ReturnUrl = "")
         {
-            
             string message = "";
-            using (JoJoEntities1 dc = new JoJoEntities1())
+            using (JoJoEntities dc = new JoJoEntities())
             {
                 ss = new Services(dc);
                 var v = dc.Users.Where(a => a.Email == login.EmailID).FirstOrDefault();
                 if (v != null)
                 {
-
                     if (string.Compare(Crypto.Hash(login.Password), v.Password) == 0)
                     {
                         int timeout = login.RememberMe ? 525600 : 20; // 525600 min = 1 year
@@ -101,7 +103,6 @@ namespace JoJo.Controllers
                         cookie.Expires = DateTime.Now.AddMinutes(timeout);
                         cookie.HttpOnly = true;
                         Response.Cookies.Add(cookie);
-
 
                         if (Url.IsLocalUrl(ReturnUrl))
                         {
@@ -127,7 +128,7 @@ namespace JoJo.Controllers
         }
 
         //Logout
-        
+
         [HttpPost]
         public ActionResult Logout()
         {
@@ -135,16 +136,15 @@ namespace JoJo.Controllers
             return RedirectToAction("Login", "User");
         }
 
-
         [NonAction]
         public bool IsEmailExist(string emailID)
         {
-            JoJoEntities1 dc = new JoJoEntities1();
+            JoJoEntities dc = new JoJoEntities();
             //ss = new Services(dc);
-            
+
             var v = dc.Users.Where(a => a.Email == emailID).FirstOrDefault();
             return v != null;
-            // return ss.isEmail(emailID); 
+            // return ss.isEmail(emailID);
         }
-        }
+    }
 }

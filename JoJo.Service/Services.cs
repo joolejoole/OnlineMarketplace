@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using JoJo;
 using JoJo.Core;
 using JoJo.Service;
+
 namespace JoJo.Service
 {
     public class Services
@@ -32,9 +33,10 @@ namespace JoJo.Service
             var v = uow.UsersRepository.GetAll().Where(a => a.Email == email).FirstOrDefault();
             return v != null;
         }
+
         public void saveUserReg(UserModel uu, string d)
         {
-            User user = new User();
+            Users user = new Users();
             user.UserID = uu.UserID;
             user.UserName = uu.UserName;
             user.Email = uu.Email;
@@ -45,9 +47,10 @@ namespace JoJo.Service
             uow.UsersRepository.Insert(user);
             uow.Save();
         }
+
         public void TestRelationship()
         {
-            User user = uow.UsersRepository.GetById(10);
+            Users user = uow.UsersRepository.GetById(10);
 
             user.UserRole = uow.UserRoleRepository.GetById(4);
 
