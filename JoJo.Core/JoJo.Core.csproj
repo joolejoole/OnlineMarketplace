@@ -84,10 +84,10 @@
     <Compile Include="Series.cs">
       <DependentUpon>JoJoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
+    <Compile Include="UserRole.cs">
       <DependentUpon>JoJoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserRole.cs">
+    <Compile Include="Users.cs">
       <DependentUpon>JoJoModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

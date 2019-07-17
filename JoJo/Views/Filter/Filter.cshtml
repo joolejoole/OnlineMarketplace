@@ -130,7 +130,6 @@
             </div>
         }
 
-
         <script>
             $(document).ready(function () {
                 $("#sliderAir").slider({
@@ -145,7 +144,6 @@
                 });
                 $("#minAir").val($("#sliderAir").slider("values", 0));
                 $("#maxAir").val($("#sliderAir").slider("values", 1));
-
 
                 $("#sliderPower").slider({
                     range: true,
@@ -188,8 +186,7 @@
             });
         </script>
 
-
-        @using (Html.BeginForm("Test","Filter",FormMethod.Get))
+        @using (Html.BeginForm("Test", "Filter", FormMethod.Get))
         {
             <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 rightPanel">
                 <h5><b>Mechanical</b>&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp; HUVAC Fans</h5>
@@ -198,7 +195,7 @@
                     </div>
 
                     <div class="col-sm-2 col-md-2 col-lg-2">
-                        <input type="submit" class="btn btn-primary" value="Compare Items" name="compareSubmit"/>
+                        <input type="submit" class="btn btn-primary" value="Compare Items" name="compareSubmit" />
                     </div>
                 </div>
                 @if (ViewBag.type == "Fans")
@@ -207,7 +204,7 @@
                     {
                         XElement xml = XElement.Parse(i.SpecDetails);
                         <div id="product">
-                            <a href='@Url.Action("Click", "Filter", new { id = i.ProductId })'>
+                            <a href='@Url.Action("Click", "ProductSummary", new { id = i.ProductId })'>
                                 <img class="img-responsive" src="~/Src/Products/@i.ProductImage" width="150" height="120" />
                             </a>
                             <h5><b>@i.ProductName<br />@i.SeriesName Series<br />@i.ModelName</b></h5><br />
@@ -223,10 +220,9 @@
                                     <button type="button" class="btn btn-sm btn-warning">Add To Card</button>
                                 </div>
                                 <div class="col-sm-1 col-md-1 col-lg-1">
-
                                 </div>
                             </div>
-            </div>
+                        </div>
                     }
                 }
                 else
@@ -249,7 +245,6 @@
                                     <button type="button" class="btn btn-sm btn-warning">Add To Card</button>
                                 </div>
                                 <div class="col-sm-1 col-md-1 col-lg-1">
-
                                 </div>
                             </div>
                         </div>
@@ -257,7 +252,6 @@
                 }
             </div>
         }
-
     </div>
 </div>
 
@@ -273,7 +267,7 @@
                 $('#compareBtn').removeClass('disabled');
             } else {
                 alert("The upper limits for compare is 3");
-                $(this).prop("checked",false);
+                $(this).prop("checked", false);
             }
         });
 

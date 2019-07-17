@@ -23,7 +23,8 @@ namespace JoJo.Repo
         }
 
         // Add all the repository handles here
-        private static IRepository<Core.User> usersRepository = null;
+        private static IRepository<Core.Users> usersRepository = null;
+
         private static IRepository<Core.UserRole> userRoleRepository = null;
         private static IRepository<Core.Manufacture> manufactureRepository = null;
         private static IRepository<Core.Series> seriesRepository = null;
@@ -34,7 +35,7 @@ namespace JoJo.Repo
 
         // Add all the repository getters here
 
-        public IRepository<Core.User> UsersRepository
+        public IRepository<Core.Users> UsersRepository
         {
             get
             {

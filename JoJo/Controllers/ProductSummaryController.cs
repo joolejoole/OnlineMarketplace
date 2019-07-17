@@ -17,5 +17,12 @@ namespace JoJo.Controllers
             SummaryData.ToString();
             return View(SummaryData);
         }
+
+        public ActionResult Click(int id)
+        {
+            Models.Product SummaryData = new Models.Product(id);
+            SummaryData.ToString();
+            return View("ShowProductSummary", SummaryData);
+        }
     }
 }

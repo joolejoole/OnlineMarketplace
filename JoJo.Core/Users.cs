@@ -12,7 +12,7 @@ namespace JoJo.Core
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Users
     {
         public int UserID { get; set; }
         public string UserName { get; set; }

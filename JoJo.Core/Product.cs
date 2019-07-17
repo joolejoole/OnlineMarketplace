@@ -23,7 +23,6 @@ namespace JoJo.Core
         public string ProductImage { get; set; }
         public string ProductName { get; set; }
         public string SpecDetails { get; set; }
-        public int CategoryId { get; set; }
         public string TypeDetails { get; set; }
     
         public virtual Manufacture Manufacture { get; set; }
@@ -31,6 +30,5 @@ namespace JoJo.Core
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ProductSubCategory ProductSubCategory { get; set; }
         public virtual Series Series { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; }
     }
 }
