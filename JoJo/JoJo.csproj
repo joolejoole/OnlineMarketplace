@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -139,6 +140,7 @@
     <Compile Include="Models\CatSubModel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\UserLogin.cs" />
+    <Compile Include="Models\Total.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +177,15 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Src\Srch\mag.png" />
     <Content Include="Src\Srch\pls.png" />
+    <Content Include="Src\Products\fan1.jpeg" />
+    <Content Include="Src\Products\fan14.jpeg" />
+    <Content Include="Src\Products\fan2.jpg" />
+    <Content Include="Src\Products\fan3.jpg" />
+    <Content Include="Src\Products\fan4.jpg" />
+    <Content Include="Src\Products\speaker1.jpg" />
+    <Content Include="Src\Products\speaker2.jpg" />
+    <Content Include="Src\Products\speaker3.jpg" />
+    <Content Include="Src\Products\speaker4.jpg" />
     <Content Include="Src\Users\selfie.jfif" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -200,6 +211,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Src\Products\" />
+    <Content Include="Views\Filter\Test.cshtml" />
+    <Content Include="Views\Filter\Click.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -216,8 +229,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JoJo.Core\JoJo.Core.csproj">
-      <Project>{F10B4AC5-DF71-4ACC-B7E9-5E5FB0D6CB8A}</Project>
+      <Project>{8382461c-e9c1-4084-a2cc-94eb9cde4189}</Project>
       <Name>JoJo.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JoJo.Repo\JoJo.Repo.csproj">
+      <Project>{51D7F4EE-727A-4110-AFE0-ABF4F08D9F90}</Project>
+      <Name>JoJo.Repo</Name>
     </ProjectReference>
     <ProjectReference Include="..\JoJo.Service\JoJo.Service.csproj">
       <Project>{1a989091-8225-409f-8ab3-bc3a5226b355}</Project>

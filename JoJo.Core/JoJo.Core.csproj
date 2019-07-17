@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F10B4AC5-DF71-4ACC-B7E9-5E5FB0D6CB8A}</ProjectGuid>
+    <ProjectGuid>{8382461C-E9C1-4084-A2CC-94EB9CDE4189}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JoJo.Core</RootNamespace>
@@ -84,10 +84,10 @@
     <Compile Include="Series.cs">
       <DependentUpon>JoJoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserRole.cs">
+    <Compile Include="User.cs">
       <DependentUpon>JoJoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Users.cs">
+    <Compile Include="UserRole.cs">
       <DependentUpon>JoJoModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

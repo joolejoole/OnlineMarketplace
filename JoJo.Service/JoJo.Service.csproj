@@ -37,9 +37,11 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,10 +55,15 @@
     <Compile Include="Sample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services.cs" />
+    <Compile Include="Cache.cs" />
+    <Compile Include="Models\Total.cs" />
+    <Compile Include="ProductDetails.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JoJo.Core\JoJo.Core.csproj">
-      <Project>{f10b4ac5-df71-4acc-b7e9-5e5fb0d6cb8a}</Project>
+      <Project>{8382461c-e9c1-4084-a2cc-94eb9cde4189}</Project>
       <Name>JoJo.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\JoJo.Repo\JoJo.Repo.csproj">

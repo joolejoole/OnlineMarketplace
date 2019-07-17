@@ -75,7 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JoJo.Core\JoJo.Core.csproj">
-      <Project>{f10b4ac5-df71-4acc-b7e9-5e5fb0d6cb8a}</Project>
+      <Project>{8382461c-e9c1-4084-a2cc-94eb9cde4189}</Project>
       <Name>JoJo.Core</Name>
     </ProjectReference>
   </ItemGroup>
