@@ -207,10 +207,12 @@
     <Content Include="Views\Search\Search_1.cshtml" />
     <Content Include="Views\Search\_Layout.cshtml" />
     <Content Include="Views\ProductSummary\ShowProductSummary.cshtml" />
+    <Content Include="Views\Compare\Wrong.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Registration.cshtml" />
+    <Content Include="Views\Shared\_LayoutSignUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Src\Products\" />
     <Content Include="Views\Filter\Test.cshtml" />
     <Content Include="Views\Filter\Click.cshtml" />
   </ItemGroup>
@@ -240,6 +242,9 @@
       <Project>{1a989091-8225-409f-8ab3-bc3a5226b355}</Project>
       <Name>JoJo.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

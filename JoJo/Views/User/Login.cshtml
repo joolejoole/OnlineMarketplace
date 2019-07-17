@@ -3,23 +3,23 @@
     ViewBag.Title = "Login";
 }
 <style>
-   .form-horizontal{
-       
-        width: 50em;
-       margin-left: auto;
-        margin-right: auto;
-        padding-left:210px;
-   }
-   .form-group{
-       
-   }
+    .form-horizontal {
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+        padding-left: 210px;
+    }
 
-   
+    .form-group {
+    }
 </style>
 
 <h2 style="text-align:center;">Online Marketplace</h2>
-<body>
 
+<!--
+<body>
+    -->
+<!--
     <div class="navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -28,65 +28,35 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
             </div>
             <div class="navbar-collapse collapse">
                 @*<button type="submit" class="signupBtn">Sign Up</button>*@
                 <ul class="nav navbar-nav" id="navUl">
 
                     @Html.ActionLink("SignUp", "Registration", "User", new { area = "" }, new { @class = "btn btn-lg btn-default signupBtn" })
-
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-1 col-sm-3 col-md-4 col-lg-4">
+-->
 
-            </div>
+<br />
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-            <div class="col-xs-10 col-sm-6 col-md-4 col-lg-4">
-                <div id="banner">
-                    <p>JooleJoole</p>
-                </div>
-            </div>
+        <div class="form-horizontal" style="border: 1px solid #000000">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <script>
-                $("#banner").mouseenter(function () {
-                    $(this).css({
-                        "background-image": "linear-gradient(#40BCF4,#EEF6FA)"
-                    });
-                });
-                $("#banner").mouseout(function () {
-                    $(this).css({
-                        "background-image": "linear-gradient(#EEF6FA,#40BCF4)"
-                    });
-                });
-            </script>
-
-            <div class="col-xs-1 col-sm-3 col-md-4 col-lg-4">
-
-            </div>
-        </div>
-    </div>
-    <br />
-    <div>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                @if (ViewBag.Message != "")
-                {
-                    <div class="text-danger">@ViewBag.Message</div>
-                }
-
-                <div class="form-group">
+            @if (ViewBag.Message != "")
+            {
+                <div class="text-danger">@ViewBag.Message</div>
+            }
+            <div class="container" style="width:100%; border:1px solid #ffd800">
+                <div class="form-group" style="border:1px solid #ff0000;">
                     @*@Html.LabelFor(model => model.EmailID, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email ID" } })
                         @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
                     </div>
@@ -94,25 +64,27 @@
 
                 <div class="form-group">
                     @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-offset-2 col-md-12">
                         <input style="float:right; margin-right:50%;" type="submit" value="Login" class="btn btn-default" />
                     </div>
                 </div>
             </div>
-        }
-    </div>
-</body>
+        </div>
+    }
+</div>
 
+<!--
+</body>
+    -->
 
 @section Scripts{
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }
-

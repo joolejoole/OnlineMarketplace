@@ -29,7 +29,11 @@
 
                         @foreach (var p in Model)
                         {
-                            <th scope="col">@p.ProductImage</th>
+                            <th scope="col">
+                                <a href='@Url.Action("Click", "ProductSummary", new { id = p.ProductId })'>
+                                    <img class="img-responsive center-block" src="~/Src/Products/@p.ProductImage" width="150" height="120" />
+                                </a>
+                            </th>
                         }
                     </tr>
                 </thead>

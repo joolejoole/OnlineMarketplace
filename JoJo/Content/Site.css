@@ -2,35 +2,37 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
+
 .dl-horizontal dt {
     white-space: normal;
 }
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+
 .navbar {
     background-color: #006699;
 }
-.navbar-brand{
+
+.navbar-brand {
     color: #FFFFFF;
     font-weight: bold;
     font-size: 40px;
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
     text-decoration: none;
 }
-.signupBtn{
+
+.signupBtn {
     margin: 5px;
     float: right;
 }
-#navUl{
+
+#navUl {
     float: right;
 }
+
 #banner {
     margin-top: 50px;
     height: auto;
@@ -43,7 +45,8 @@ textarea {
     text-align: center;
     background-image: linear-gradient(#EEF6FA,#40BCF4);
 }
-.left{
+
+.left {
     margin-right: 100px;
     cursor: pointer;
 }

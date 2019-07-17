@@ -1,5 +1,15 @@
-﻿h4 {
+﻿h4, h3 {
     padding-bottom: 8px;
+}
+
+td, th {
+    vertical-align: central;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .secondary {

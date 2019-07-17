@@ -2,25 +2,27 @@
 
 @{
     ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_LayoutSignUp.cshtml";
 }
 
 @*<h2>Registration</h2>
-<div class="modal fade" tabindex="-1" id="loginModal"
-     data-keyboard="false" data-backdrop="static">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"></button>
-                <h3 class="modal-title">User Registration</h3>
+    <div class="modal fade" tabindex="-1" id="loginModal"
+         data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h3 class="modal-title">User Registration</h3>
+                </div>
             </div>
-        </div>
-        <div class="modal-body">*@
+            <div class="modal-body">*@
 <style>
-    #gg{
-  -moz-box-shadow: 0 0 50px #ccc;
--webkit-box-shadow: 0 0 50px #ccc;
-box-shadow: 0 0 50px #ccc;
-}
+    #gg {
+        -moz-box-shadow: 0 0 50px #ccc;
+        -webkit-box-shadow: 0 0 50px #ccc;
+        box-shadow: 0 0 50px #ccc;
+        margin-top: 40px;
+    }
 </style>
 
 <div class="container" id="gg">
@@ -118,7 +120,6 @@ box-shadow: 0 0 50px #ccc;
                     </div>
                 </div>
 
-
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Submit" class="btn btn-default" />
@@ -135,8 +136,8 @@ box-shadow: 0 0 50px #ccc;
     }
 
     <div style="padding:30px">
-            @Html.ActionLink("Login", "Login")
-        </div>
+        @Html.ActionLink("Login", "Login")
+    </div>
     @*</div>
             </div>
         </div>*@
@@ -146,15 +147,13 @@ box-shadow: 0 0 50px #ccc;
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }
 @*<script type="text/javascript">
-    $(document).ready(function () {
-        $(".signupBtn").click(function () {
-            $("#loginModal").modal('show');
+        $(document).ready(function () {
+            $(".signupBtn").click(function () {
+                $("#loginModal").modal('show');
 
+            });
+            $("#btnHideModal").click(function () {
+                $("#loginModal").modal('hide');
+            });
         });
-        $("#btnHideModal").click(function () {
-            $("#loginModal").modal('hide');
-        });
-    });
-
-</script>*@
-
+    </script>*@

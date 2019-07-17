@@ -1,0 +1,76 @@
+﻿@model List<JoJo.Models.Product>
+
+@{
+    Layout = "~/Views/Shared/_DisplayLayout.cshtml";
+}
+
+@Styles.Render("~/Content/Compare.css")
+
+<div id="compare_content" class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h2>Something Wrong</h2>
+            <h3>You're trying to compare products in different SubCategories</h3>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+
+                        @foreach (var p in Model)
+                        {
+                            <th scope="col">
+                                <a href='@Url.Action("Click", "ProductSummary", new { id = p.ProductId })'>
+                                    <img class="img-responsive center-block" src="~/Src/Products/@p.ProductImage" width="150" height="120" />
+                                </a>
+                            </th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" class="secondary">
+                            Product Name
+                        </th>
+
+                        @foreach (var p in Model)
+                        {
+                            <td>
+                                @p.ProductName
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <th scope="row" class="secondary">
+                            Product Category
+                        </th>
+
+                        @foreach (var p in Model)
+                        {
+                            <td>
+                                @p.CategoryName
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <th scope="row" class="secondary">
+                            Product SubCategory
+                        </th>
+
+                        @foreach (var p in Model)
+                        {
+                            <td>
+                                @p.SubCategoryName
+                            </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
