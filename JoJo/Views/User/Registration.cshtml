@@ -1,0 +1,160 @@
+﻿@model JoJo.Service.UserModel
+
+@{
+    ViewBag.Title = "Registration";
+}
+
+@*<h2>Registration</h2>
+<div class="modal fade" tabindex="-1" id="loginModal"
+     data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"></button>
+                <h3 class="modal-title">User Registration</h3>
+            </div>
+        </div>
+        <div class="modal-body">*@
+<style>
+    #gg{
+  -moz-box-shadow: 0 0 50px #ccc;
+-webkit-box-shadow: 0 0 50px #ccc;
+box-shadow: 0 0 50px #ccc;
+}
+</style>
+
+<div class="container" id="gg">
+    <h1>User Registration</h1>
+    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success">
+                <strong>Success!</strong>@ViewBag.Message
+            </div>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("Registration", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <img id="thumbnil" style="width:10%;margin-left:200px;padding-bottom:10px;" src="http://nfss.org/wp-content/uploads/2014/11/empty-profile.png" alt="image" enctype="multipart/form-data" />
+                    <br />
+                    @Html.LabelFor(model => model.UserPicture, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10;editor-field">
+                        @*<form action="" method="post" enctype="multipart/form-data">*@
+
+                        <input style="padding-left:15px;" type="file" name="file" accept="image/*" onchange="showMyImage(this)" />
+                        <script>
+                            function showMyImage(fileInput) {
+                                var files = fileInput.files;
+                                for (var i = 0; i < files.length; i++) {
+                                    var file = files[i];
+                                    var imageType = /image.*/;
+                                    if (!file.type.match(imageType)) {
+                                        continue;
+                                    }
+                                    var img = document.getElementById("thumbnil");
+                                    img.file = file;
+                                    var reader = new FileReader();
+                                    reader.onload = (function (aImg) {
+                                        return function (e) {
+                                            aImg.src = e.target.result;
+                                        };
+                                    })(img);
+                                    reader.readAsDataURL(file);
+                                }
+                            }
+                        </script>
+                        @*<input style="margin-left:15px" type="file" name="file" />*@
+                        @*</form>*@
+                        @Html.ValidationMessageFor(model => model.UserPicture, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserRoleId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserRoleId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserRoleId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            if (ViewBag.Message != null)
+            {
+                <div class="alert alert-danger">
+                    <strong>Error!</strong>@ViewBag.Message
+                </div>
+            }
+        }
+    }
+
+    <div style="padding:30px">
+            @Html.ActionLink("Login", "Login")
+        </div>
+    @*</div>
+            </div>
+        </div>*@
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $(".signupBtn").click(function () {
+            $("#loginModal").modal('show');
+
+        });
+        $("#btnHideModal").click(function () {
+            $("#loginModal").modal('hide');
+        });
+    });
+
+</script>*@
+
