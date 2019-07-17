@@ -8,7 +8,7 @@ using JoJo;
 
 namespace JoJo.Repo
 {
-    public partial class UsersRepository : Repository<Core.Users>, IUsersRepository
+    public partial class UsersRepository : Repository<Core.User>, IUsersRepository
     {
         public UsersRepository(DbContext dbContext) : base(dbContext)
         {

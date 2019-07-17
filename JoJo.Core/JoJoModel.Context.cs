@@ -25,13 +25,13 @@ namespace JoJo.Core
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Manufacture> Manufacture { get; set; }
-        public virtual DbSet<Model> Model { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductCategory> ProductCategory { get; set; }
-        public virtual DbSet<ProductSubCategory> ProductSubCategory { get; set; }
+        public virtual DbSet<Manufacture> Manufactures { get; set; }
+        public virtual DbSet<Model> Models { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
+        public virtual DbSet<ProductSubCategory> ProductSubCategories { get; set; }
         public virtual DbSet<Series> Series { get; set; }
-        public virtual DbSet<UserRole> UserRole { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

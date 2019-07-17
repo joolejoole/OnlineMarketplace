@@ -12,18 +12,15 @@ namespace JoJo.Core
     using System;
     using System.Collections.Generic;
     
-    public partial class UserRole
+    public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserRole()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
+        public int UserID { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
         public int UserRoleId { get; set; }
-        public string RoleDescription { get; set; }
+        public string UserPicture { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual UserRole UserRole { get; set; }
     }
 }

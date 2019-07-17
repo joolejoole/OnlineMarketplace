@@ -15,6 +15,7 @@ namespace JoJo.Core
     public partial class Product
     {
         public int ProductId { get; set; }
+        public int CategoryId { get; set; }
         public int SubCategoryId { get; set; }
         public int ModelId { get; set; }
         public int SeriesId { get; set; }
@@ -22,9 +23,11 @@ namespace JoJo.Core
         public string ProductImage { get; set; }
         public string ProductName { get; set; }
         public string SpecDetails { get; set; }
+        public string TypeDetails { get; set; }
     
         public virtual Manufacture Manufacture { get; set; }
         public virtual Model Model { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
         public virtual ProductSubCategory ProductSubCategory { get; set; }
         public virtual Series Series { get; set; }
     }

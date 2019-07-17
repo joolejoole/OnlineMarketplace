@@ -18,21 +18,18 @@ namespace JoJo.Repo
         }
 
         // Add all the repository handles here
-        private static IRepository<Core.Users> usersRepository = null;
-
+        private static IRepository<Core.User> usersRepository = null;
         private static IRepository<Core.UserRole> userRoleRepository = null;
-
         private static IRepository<Core.Manufacture> manufactureRepository = null;
         private static IRepository<Core.Series> seriesRepository = null;
         private static IRepository<Core.Model> modelRepository = null;
-
         private static IRepository<Core.Product> productRepository = null;
         private static IRepository<Core.ProductCategory> productCategoryRepository = null;
         private static IRepository<Core.ProductSubCategory> productSubCategoryRepository = null;
 
         // Add all the repository getters here
 
-        public IRepository<Core.Users> UsersRepository
+        public IRepository<Core.User> UsersRepository
         {
             get
             {

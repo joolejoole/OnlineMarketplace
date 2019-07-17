@@ -18,7 +18,7 @@ namespace JoJo.Core
         public Manufacture()
         {
             this.Series = new HashSet<Series>();
-            this.Product = new HashSet<Product>();
+            this.Products = new HashSet<Product>();
         }
     
         public int ManufactureId { get; set; }
@@ -27,6 +27,6 @@ namespace JoJo.Core
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Series> Series { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Product { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

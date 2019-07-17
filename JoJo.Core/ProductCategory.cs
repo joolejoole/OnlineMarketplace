@@ -17,13 +17,16 @@ namespace JoJo.Core
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ProductCategory()
         {
-            this.ProductSubCategory = new HashSet<ProductSubCategory>();
+            this.Products = new HashSet<Product>();
+            this.ProductSubCategories = new HashSet<ProductSubCategory>();
         }
     
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductSubCategory> ProductSubCategory { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductSubCategory> ProductSubCategories { get; set; }
     }
 }
