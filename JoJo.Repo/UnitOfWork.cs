@@ -128,11 +128,32 @@ namespace JoJo.Repo
         public void Dispose()
         {
             dbContext.Dispose();
+<<<<<<< HEAD
+            //throw new NotImplementedException();
+=======
+>>>>>>> 6d1476bc68e01bfb4055b6ce8b6c80b569a76e4e
         }
 
-        public void Save()
+        public bool Save()
         {
-            dbContext.SaveChanges();
+            bool status = false;
+
+            try
+            {
+                dbContext.SaveChanges();
+                status = true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+
+            return status;
+        }
+
+        public async Task SaveAsync()
+        {
+            await dbContext.SaveChangesAsync();
         }
     }
 }
