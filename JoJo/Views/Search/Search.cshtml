@@ -1,12 +1,11 @@
 ﻿@model JoJo.Models.CatSubModel
 
-@*@{
-        Layout = null;
-    }*@
+@{
+    Layout = "~/Views/Search/SearchLayout.cshtml";
+}
 
 <style>
     body {
-        background-color: #E0F5FD;
     }
 
     #catI {
@@ -28,31 +27,31 @@
         {
             width:30px;
         }*/
-  
-    .styled-select {
-   background:no-repeat right center;
-   height: 29px;
-   overflow:hidden;
-   width: 240px;
-   background-color: #6cb9e9;
-}
-</style>
 
+    .styled-select {
+        background: no-repeat right center;
+        height: 29px;
+        overflow: hidden;
+        width: 240px;
+        background-color: #6cb9e9;
+    }
+</style>
 
 <br /><br />
 <div class="center-div" id="content">
-    <form action="filter/filter" method="POST">
-        
+    @using (@Html.BeginForm("Filter", "Filter", FormMethod.Get))
+    {
+
         <div class="form-group" id="catI">
 
-                @if (ViewBag.prodCat != null)
-                {
-                    @Html.DropDownListFor(model => model.CategoryId, ViewBag.prodCat as SelectList, "--Select Category--", new { @class = "styled-select" , @Name="CategoryID"})
-                }
+            @if (ViewBag.prodCat != null)
+            {
+                @Html.DropDownListFor(model => model.CategoryId, ViewBag.prodCat as SelectList, "--Select Category--", new { @class = "styled-select", @Name = "CategoryID" })
+            }
         </div>
         <div class="form-group" id="subI">
             <div>
-                @Html.TextBox("txtempname", null, new { @class = "form-control tbox",@Name="SubCategoryName" })
+                @Html.TextBox("txtempname", null, new { @class = "form-control tbox", @Name = "SubCategoryName" })
             </div>
         </div>
         <div class="form-group" id="sI">
@@ -60,7 +59,7 @@
                 <input type="image" id="close-image" src="~/Src/Srch/pls.png" height="20" />
             </div>
         </div>
-    </form>
+    }
 </div>
 
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.0.js"></script>
@@ -109,6 +108,4 @@
 
         console.log(sessionStorage.getItem('CategoryId'));
     }
-
 </script>
-

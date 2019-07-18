@@ -31,9 +31,13 @@
     {
         if (ViewBag.Message != null)
         {
+            Session["userEmail"] = Model.Email;
+            Session["userImg"] = Model.UserPicture;
+
             <div class="alert alert-success">
                 <strong>Success!</strong>@ViewBag.Message
             </div>
+
         }
     }
     else
@@ -115,7 +119,12 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.UserRoleId, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.UserRoleId, new { htmlAttributes = new { @class = "form-control" } })
+                        <select name="mylist">
+                            <option disabled selected value> -- select an option -- </option>
+                            <option value="1">Consumer</option>
+                            <option value="2">Customer</option>
+                            <option value="3">Admin</option>
+                        </select>
                         @Html.ValidationMessageFor(model => model.UserRoleId, "", new { @class = "text-danger" })
                     </div>
                 </div>

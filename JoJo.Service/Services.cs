@@ -34,14 +34,14 @@ namespace JoJo.Service
             return v != null;
         }
 
-        public void saveUserReg(UserModel uu, string d)
+        public void saveUserReg(UserModel uu, string d, int v)
         {
             Users user = new Users();
             user.UserID = uu.UserID;
             user.UserName = uu.UserName;
             user.Email = uu.Email;
             user.Password = uu.ConfirmPassword;
-            user.UserRoleId = uu.UserRoleId;
+            user.UserRoleId = v;
             user.UserPicture = d;
 
             uow.UsersRepository.Insert(user);

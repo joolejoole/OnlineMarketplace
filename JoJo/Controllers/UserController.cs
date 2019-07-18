@@ -22,6 +22,58 @@ namespace JoJo.Controllers
 
         private Services ss;
 
+        public ActionResult Registration(UserModel user, HttpPostedFileBase file, int mylist)
+        {
+            bool Status = false;
+            string message = "";
+            //Extract Image File Name.
+            string fileName = Path.GetFileName(file.FileName);
+            //Set the Image File Path.
+            string imgP = Path.Combine(Server.MapPath("~/Src/Users"), fileName);
+            file.SaveAs(imgP);
+            // Model Validation
+            if (ModelState.IsValid)
+            {
+                #region //Email is already Exist
+
+                var isExist = IsEmailExist(user.Email);
+                if (isExist)
+                {
+                    ModelState.AddModelError("EmailExist", "Email already exist");
+                    return View(user);
+                }
+
+                #endregion //Email is already Exist
+
+                #region Password Hashing
+
+                user.Password = Crypto.Hash(user.Password);
+                user.ConfirmPassword = Crypto.Hash(user.ConfirmPassword);
+
+                #endregion Password Hashing
+
+                JoJoEntities dc = new JoJoEntities();
+                ss = new Services(dc);
+                ss.saveUserReg(user, fileName, mylist);
+
+                //Send Email to User
+                //SendVerificationLinkEmail(user.EmailID, user.ActivationCode.ToString());
+                message = "Registration successfully done with ID" + user.Email;
+                Status = true;
+
+                user.UserPicture = fileName;
+            }
+            else
+            {
+                message = "Invalid Request";
+            }
+
+            ViewBag.Message = message;
+            ViewBag.Status = Status;
+            return View(user);
+        }
+
+        /*
         //Registration POST action
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -57,7 +109,7 @@ namespace JoJo.Controllers
 
                 JoJoEntities dc = new JoJoEntities();
                 ss = new Services(dc);
-                ss.saveUserReg(user, imgP);
+                ss.saveUserReg(user, fileName);
 
                 //Send Email to User
                 //SendVerificationLinkEmail(user.EmailID, user.ActivationCode.ToString());
@@ -73,13 +125,21 @@ namespace JoJo.Controllers
             ViewBag.Status = Status;
             return View(user);
         }
+        */
 
         //Login
         [HttpGet]
         public ActionResult Login()
         {
-            UserLogin one = new UserLogin();
-            return View(one);
+            if (Session["userEmail"] != null)
+            {
+                return RedirectToAction("Search", "Search");
+            }
+            else
+            {
+                UserLogin one = new UserLogin();
+                return View(one);
+            }
         }
 
         //Login POST
@@ -110,7 +170,9 @@ namespace JoJo.Controllers
                         }
                         else
                         {
-                            return RedirectToAction("Index", "Home");
+                            Session["userEmail"] = login.EmailID;
+                            Session["userImg"] = v.UserPicture;
+                            return RedirectToAction("Search", "Search");
                         }
                     }
                     else
@@ -129,10 +191,14 @@ namespace JoJo.Controllers
 
         //Logout
 
-        [HttpPost]
+        //[HttpPost]
         public ActionResult Logout()
         {
             //FormsAuthentication.SignOut();
+
+            Session["userEmail"] = null;
+            Session["userImg"] = null;
+
             return RedirectToAction("Login", "User");
         }
 

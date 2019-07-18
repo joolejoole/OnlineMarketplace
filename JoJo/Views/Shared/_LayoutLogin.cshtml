@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title- JooleJoole</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div class="navbar navbar-fixed-top" style="color:blue">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color:white;">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("JooleJoole", "Login", "User", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" id="navUl">
+                    @if (Session["userEmail"] != null)
+                    {
+                        @Html.ActionLink("Log Out", "Logout", "User",
+                       new { area = "" },
+                       new { @class = "btn btn-lg btn-default signupBtn" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Sign Up", "Registration", "User", new { area = "" }, new { @class = "btn btn-lg btn-default signupBtn" })
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-1 col-sm-3 col-md-4 col-lg-4">
+            </div>
+
+            <div class="col-xs-10 col-sm-6 col-md-4 col-lg-4">
+                <div id="banner">
+                    <p>JooleJoole</p>
+                </div>
+            </div>
+
+            <script>
+                $("#banner").mouseenter(function () {
+                    $(this).css({
+                        "background-image": "linear-gradient(#40BCF4,#EEF6FA)"
+                    });
+                });
+                $("#banner").mouseout(function () {
+                    $(this).css({
+                        "background-image": "linear-gradient(#EEF6FA,#40BCF4)"
+                    });
+                });
+            </script>
+
+            <div class="col-xs-1 col-sm-3 col-md-4 col-lg-4">
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,5 +1,4 @@
-﻿
-using JoJo.Repo;
+﻿using JoJo.Repo;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -32,7 +31,8 @@ namespace JoJo.Service
             var table1 = (from manufacture in _Manufacture
                           join series in _Series on manufacture.ManufactureId equals series.ManufactureId
                           join model in _Model on series.SeriesId equals model.SeriesId
-                          select new Models.Total {
+                          select new Models.Total
+                          {
                               ManufactureId = manufacture.ManufactureId,
                               ManufactureIdName = manufacture.ManufactureIdName,
                               SeriesId = series.SeriesId,
@@ -43,13 +43,14 @@ namespace JoJo.Service
 
             var table2 = (from productCategory in _ProductCategory
                           join productSubCategory in _ProductSubCategory on productCategory.CategoryId equals productSubCategory.CategoryId
-                          select new Models.Total {
-                             CategoryId = productCategory.CategoryId,
-                             CategoryName = productCategory.CategoryName,
-                             SubCategoryId = productSubCategory.SubCategoryId,
-                             SubCategoryName = productSubCategory.SubCategoryName,
-                             Specs = productSubCategory.SPECS,
-                             ModelType = productSubCategory.ModelType
+                          select new Models.Total
+                          {
+                              CategoryId = productCategory.CategoryId,
+                              CategoryName = productCategory.CategoryName,
+                              SubCategoryId = productSubCategory.SubCategoryId,
+                              SubCategoryName = productSubCategory.SubCategoryName,
+                              Specs = productSubCategory.SPECS,
+                              ModelType = productSubCategory.ModelType
                           });
             var table3 = (from t1 in table1
                           join product in _Product on t1.ModelId equals product.ModelId
@@ -68,12 +69,16 @@ namespace JoJo.Service
                               ProductImage = product.ProductImage,
                               SubCategoryId = product.SubCategoryId,
                               SpecDetails = product.SpecDetails
-                          }) ;
+                          });
             var query = (from t2 in table2
-                         join t3 in table3 on t2.SubCategoryId equals t3.SubCategoryId orderby t3.ProductId
-                         select new Models.Total {
+                         join t3 in table3 on t2.SubCategoryId equals t3.SubCategoryId
+                         orderby t3.ProductId
+                         select new Models.Total
+                         {
                              CategoryName = t2.CategoryName,
+                             CategoryId = t2.CategoryId,
                              SubCategoryName = t2.SubCategoryName,
+                             SubCategoryId = t2.SubCategoryId,
                              Specs = t2.Specs,
                              ModelType = t2.ModelType,
                              ManufactureIdName = t3.ManufactureIdName,
@@ -84,7 +89,6 @@ namespace JoJo.Service
                              ProductName = t3.ProductName,
                              ProductImage = t3.ProductImage,
                              SpecDetails = t3.SpecDetails
-
                          });
             return query;
         }

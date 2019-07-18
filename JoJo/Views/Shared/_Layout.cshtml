@@ -21,7 +21,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="navUl">
-                    @Html.ActionLink("SignUp", "Registration", "User", new { area = "" }, new { @class = "btn btn-lg btn-default signupBtn" })
+                    @if (Session["userEmail"] != null)
+                    {
+                        @Html.ActionLink("Log Out", "Logout", "User",
+                       new { area = "" },
+                       new { @class = "btn btn-lg btn-default signupBtn" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Sign Up", "Registration", "User", new { area = "" }, new { @class = "btn btn-lg btn-default signupBtn" })
+                    }
                 </ul>
             </div>
         </div>

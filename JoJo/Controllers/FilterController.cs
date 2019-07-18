@@ -15,21 +15,21 @@ namespace JoJo.Controllers
 {
     public class FilterController : Controller
     {
-        public ActionResult Filter()
+        [HttpGet]
+        public ActionResult Filter(string CategoryID, string SubCategoryName)
         {
-            string category = "Electrical";
-            string subcategory = "Fans";
+            int category = Convert.ToInt32(CategoryID);
+            string subcategory = SubCategoryName;
             Core.JoJoEntities jo = new Core.JoJoEntities();
             Service.ProductDetails productDetails = new Service.ProductDetails(jo);
             var ProductList = productDetails.GetProduct();
-            var result = (from p in ProductList where p.CategoryName == category && p.SubCategoryName == subcategory select p);
+            var result = (from p in ProductList where p.CategoryId == category && p.SubCategoryName == subcategory select p);
             ViewBag.type = subcategory;
             TempData["type"] = subcategory;
             ViewBag.result = result;
 
             var Categories = productDetails.GetCategory();
             ViewBag.categories = Categories;
-
 
             return View();
         }
@@ -60,7 +60,6 @@ namespace JoJo.Controllers
 
             var Categories = productDetails.GetCategory();
             ViewBag.categories = Categories;
-
 
             return View("Filter");
         }

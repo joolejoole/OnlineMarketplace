@@ -211,6 +211,8 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\Shared\_LayoutSignUp.cshtml" />
+    <Content Include="Views\Search\SearchLayout.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Filter\Test.cshtml" />

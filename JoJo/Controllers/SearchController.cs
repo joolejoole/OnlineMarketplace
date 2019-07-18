@@ -12,8 +12,10 @@ namespace JoJo.Controllers
     public class SearchController : Controller
     {
         private static int gID;
+
         //JoJoEntities one = new JoJoEntities();
-        Sample s;
+        private Sample s;
+
         public ActionResult Search()
         {
             JoJoEntities one = new JoJoEntities();
@@ -41,7 +43,7 @@ namespace JoJo.Controllers
             JoJoEntities one = new JoJoEntities();
             var g = gID;
             //List<ProductSubCategory> subCat = one.ProductSubCategory.Where(x => x.CategoryId == CategoryId).ToList();
-            var emp = (from x in one.ProductSubCategory where x.SubCategoryName.StartsWith(ename) && x.CategoryId==g select new { label = x.SubCategoryName }).ToList();
+            var emp = (from x in one.ProductSubCategory where x.SubCategoryName.StartsWith(ename) && x.CategoryId == g select new { label = x.SubCategoryName }).ToList();
             s = new Sample(one);
             return Json(emp);
         }
