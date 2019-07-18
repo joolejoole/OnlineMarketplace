@@ -228,7 +228,9 @@
                     {
                         XElement xml = XElement.Parse(i.SpecDetails);
                         <div id="product">
-                            <img class="img-responsive" src="~/Src/Products/@i.ProductImage" width="150" height="120" />
+                            <a href='@Url.Action("Click", "ProductSummary", new { id = i.ProductId })'>
+                                <img class="img-responsive" src="~/Src/Products/@i.ProductImage" width="150" height="120" />
+                            </a>
                             <h5><b>@i.ProductName<br />@i.SeriesName Series<br />@i.ModelName</b></h5><br />
                             <h5>@xml.Elements("item").ToList()[0].Value dB</h5>
                             <h5>@xml.Elements("item").ToList()[1].Value Meter</h5>

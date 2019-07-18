@@ -14,7 +14,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                @Html.ActionLink("JooleJoole", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("JooleJoole", "Search", "Search", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav hidden-xs" id="navUl">
@@ -25,8 +25,8 @@
 
                             string user_img = "Src/Users/" + Session["userImg"];
 
-                            <span class="badge">Hello! @Session["userEmail"]</span>
-                            <img style="width:50px;height:50px" src="~/@user_img" class="img-circle selfieImg" />
+                            <span style="background-color:#006699" class="badge"><img style="width:50px;height:50px;float:left" src="~/@user_img" class="img-circle selfieImg" />Hello! @Session["userEmail"]</span>
+                            
                         }
                         else
                         {

@@ -12,134 +12,135 @@
     char[] delimiters = new char[] { '(', ')', ',', ' ', '\n', '\r', '\t' };
 }
 
-<div id="compare_content" class="container">
 
-    <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h4 class="darkblue">@Model.First().CategoryName > @Model.First().SubCategoryName > Compare</h4>
-        </div>
-    </div>
+        <div id="compare_content" class="container">
 
-    <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h4 class="darkblue">@Model.First().CategoryName > @Model.First().SubCategoryName > Compare</h4>
+                </div>
+            </div>
 
-                        @foreach (var p in Model)
-                        {
-                            <th scope="col">
-                                <a href='@Url.Action("Click", "ProductSummary", new { id = p.ProductId })'>
-                                    <img class="img-responsive center-block" src="~/Src/Products/@p.ProductImage" width="150" height="120" />
-                                </a>
-                            </th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row" colspan=@col class="secondary">DESCRIPTION</th>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="secondary">Manufacture</th>
-
-                        @foreach (var p in Model)
-                        {
-                            <td>@p.ManufactureIdName</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th scope="row" class="secondary">Series</th>
-
-                        @foreach (var p in Model)
-                        {
-                            <td>@p.SeriesName</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th scope="row" class="secondary">Model</th>
-
-                        @foreach (var p in Model)
-                        {
-                            <td>@p.ModelName</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th scope="row" colspan=@col class="secondary">TYPES</th>
-                    </tr>
-                    @foreach (var type in Model.First().TypeValues.Keys)
-                    {
-                        <tr>
-                            <th class="secondary">@type</th>
-
-                            @foreach (var p in Model)
-                            {
-                                <td>
-                                    @p.TypeValues[type]
-                                </td>
-                            }
-                        </tr>
-                    }
-                    <tr>
-                        <th scope="row" colspan=@col class="secondary">TECHNICAL SEPCIFICATIONS</th>
-                    </tr>
-                    @foreach (var spec in Model.First().SpecValues.Keys)
-                    {
-                        // This spec is a single value
-                        if (!Model.First().SpecLabels.ContainsKey(spec))
-                        {
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
                             <tr>
-                                <th class="secondary">@spec</th>
+                                <th scope="col"></th>
 
                                 @foreach (var p in Model)
                                 {
-                                    <td>
-                                        @p.SpecValues[spec]
-                                    </td>
+                                    <th scope="col">
+                                        <a href='@Url.Action("Click", "ProductSummary", new { id = p.ProductId })'>
+                                            <img class="img-responsive center-block" src="~/Src/Products/@p.ProductImage" width="150" height="120" />
+                                        </a>
+                                    </th>
                                 }
                             </tr>
-                        }
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" colspan=@col class="secondary">DESCRIPTION</th>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="secondary">Manufacture</th>
 
-                        // This spec contains multiple values
-                        else
-                        {
-                            // Get labels
-                            string labels_string = Model.First().SpecLabels[spec];
+                                @foreach (var p in Model)
+                                {
+                                    <td>@p.ManufactureIdName</td>
+                                }
+                            </tr>
+                            <tr>
+                                <th scope="row" class="secondary">Series</th>
 
-                            string[] labels = labels_string.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+                                @foreach (var p in Model)
+                                {
+                                    <td>@p.SeriesName</td>
+                                }
+                            </tr>
+                            <tr>
+                                <th scope="row" class="secondary">Model</th>
 
-                            // Get value of each label from all compared products
-                            List<string[]> spec_values = new List<string[]>();
-
-                            foreach (var p in Model)
-                            {
-                                string values_string = p.SpecValues[spec];
-
-                                string[] vs = values_string.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
-
-                                spec_values.Add(vs);
-                            }
-
-                            // Display seperate row for each label
-                            for (int i = 0; i < labels.Length; ++i)
+                                @foreach (var p in Model)
+                                {
+                                    <td>@p.ModelName</td>
+                                }
+                            </tr>
+                            <tr>
+                                <th scope="row" colspan=@col class="secondary">TYPES</th>
+                            </tr>
+                            @foreach (var type in Model.First().TypeValues.Keys)
                             {
                                 <tr>
-                                    <th class="secondary">@spec - @labels[i]</th>
+                                    <th class="secondary">@type</th>
 
-                                    @for (int j = 0; j < spec_values.Count(); ++j)
+                                    @foreach (var p in Model)
                                     {
                                         <td>
-                                            @spec_values[j][i]
+                                            @p.TypeValues[type]
                                         </td>
                                     }
                                 </tr>
                             }
+                            <tr>
+                                <th scope="row" colspan=@col class="secondary">TECHNICAL SEPCIFICATIONS</th>
+                            </tr>
+                            @foreach (var spec in Model.First().SpecValues.Keys)
+                            {
+                                // This spec is a single value
+                                if (!Model.First().SpecLabels.ContainsKey(spec))
+                                {
+                                    <tr>
+                                        <th class="secondary">@spec</th>
 
-                        }
-                    }
-                </tbody>
-            </table>
+                                        @foreach (var p in Model)
+                                        {
+                                            <td>
+                                                @p.SpecValues[spec]
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+
+                                // This spec contains multiple values
+                                else
+                                {
+                                    // Get labels
+                                    string labels_string = Model.First().SpecLabels[spec];
+
+                                    string[] labels = labels_string.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+
+                                    // Get value of each label from all compared products
+                                    List<string[]> spec_values = new List<string[]>();
+
+                                    foreach (var p in Model)
+                                    {
+                                        string values_string = p.SpecValues[spec];
+
+                                        string[] vs = values_string.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+
+                                        spec_values.Add(vs);
+                                    }
+
+                                    // Display seperate row for each label
+                                    for (int i = 0; i < labels.Length; ++i)
+                                    {
+                                        <tr>
+                                            <th class="secondary">@spec - @labels[i]</th>
+
+                                            @for (int j = 0; j < spec_values.Count(); ++j)
+                                            {
+                                                <td>
+                                                    @spec_values[j][i]
+                                                </td>
+                                            }
+                                        </tr>
+                                    }
+
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
